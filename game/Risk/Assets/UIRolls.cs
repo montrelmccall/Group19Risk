@@ -12,6 +12,10 @@ public class UIRolls : MonoBehaviour {
 	public bool white = false;
 	public bool blue = false;
 
+	public bool canRoll = false;
+
+	public Button Roller;
+
 	public bool android = false;
 
 	private Vector3[] startPos;
@@ -42,7 +46,7 @@ public class UIRolls : MonoBehaviour {
 		temp = new string(tempc);
 		this.GetComponent<Text> ().text = temp;
 
-		if (Input.GetKeyDown (KeyCode.Space) || (android && Input.GetMouseButtonDown(0))) {
+		if ((android && Input.GetMouseButtonDown(0))) {
 			for (int i = 0; i < dice.GetLength (0); i++) {
 				dice [i].transform.position = startPos [i];
 				Rigidbody tbody = dice [i].GetComponent<Rigidbody> ();
@@ -50,6 +54,27 @@ public class UIRolls : MonoBehaviour {
 				tbody.angularVelocity = new Vector3 (Random.Range (-rs*2f, rs*2f), Random.Range (-rs*2f, rs*2f), Random.Range (-rs*2f, rs*2f));
 
 			}
+		}
+
+		for (int i = 0; i < dice.GetLength (0); i++) {
+			if(dice[i].GetComponent<Rigidbody>().velocity.magnitude < 1f && dice[i].GetComponent<Rigidbody>().velocity.magnitude > 0.01f) {
+				float newX = dice [i].transform.position.x*40f + startPos [i].x;
+				float newY = dice [i].transform.position.y*40f + startPos [i].y;
+				float newZ = dice [i].transform.position.z*40f + startPos [i].z;
+				dice [i].GetComponent<MeshCollider> ().enabled = false;
+				dice [i].transform.position = new Vector3 (newX / 41f, newY / 41f, newZ / 41f);
+			}
+			else
+				dice [i].GetComponent<MeshCollider> ().enabled = true;
+		}
+	}
+
+	public void Roll() {
+		for (int i = 0; i < dice.GetLength (0); i++) {
+			dice [i].transform.position = startPos [i];
+			Rigidbody tbody = dice [i].GetComponent<Rigidbody> ();
+			tbody.velocity = new Vector3 (Random.Range (-rs, rs), Random.Range (rs * 2, rs * 5f), Random.Range (-rs, rs));
+			tbody.angularVelocity = new Vector3 (Random.Range (-rs * 2f, rs * 2f), Random.Range (-rs * 2f, rs * 2f), Random.Range (-rs * 2f, rs * 2f));
 		}
 	}
 }
