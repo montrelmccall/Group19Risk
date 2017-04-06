@@ -21,6 +21,7 @@ public class drawACard : MonoBehaviour {
     bool shrinking = false;
     bool doingSomething = false;
     bool returningOrCentering = true;
+    bool wasShrinking = false;
     readonly float cardWidth = 1000;
     readonly float cardHeight = 1400;
     readonly float bigRatio = .7f;
@@ -137,26 +138,6 @@ public class drawACard : MonoBehaviour {
 
         }
 
-        //rotate the card
-        if (rotating)
-        {
-
-            if(!changeFace && rotationCount >= 90)
-            {
-                transform.FindChild("Back").gameObject.SetActive(!transform.FindChild("Back").gameObject.activeSelf);
-                changeFace = true;
-            }
-            if (rotationCount < 180)
-            {
-                Debug.Log("tee" + rotationCount);
-                transform.Rotate(new Vector3(0, 1), rotateSpeed);
-                rotationCount += rotateSpeed;
-            }else {
-                rotating = false;
-                rotationCount = 0;
-                changeFace = false;
-            }
-        }
 
         //returning
         if (returningX)
@@ -219,11 +200,18 @@ public class drawACard : MonoBehaviour {
 
         if (!centeringX && !centeringY && !enlarging && !rotating && !returningX && !returningY &&!shrinking)
         {
+            
             if (doingSomething)
             {
                 doingSomething = false;
-                transform.Find("Return").gameObject.SetActive(true);
-                
+                //transform.Find("Return").GetComponent<BoxCollider2D>().enabled = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+
+            if (wasShrinking)
+            {
+                wasShrinking = false;
+                //transform.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
 
@@ -242,6 +230,7 @@ public class drawACard : MonoBehaviour {
     public void shrink()
     {
         //zoom out
+        wasShrinking = true;
         shrinking = true;
         returningX = true;
         lesserX = transform.position.x < xOrigin;
@@ -271,17 +260,12 @@ public class drawACard : MonoBehaviour {
     {
         if (Input.GetMouseButton(0))
         {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             doingSomething = true;
                 enlarge();
                 centerX();
                 centerY();         
              
-        }else if (Input.GetMouseButton(1))
-        {
-            doingSomething = true;
-                Debug.Log("Card rightclicked");
-                rotate();
-     
         }
     }
 }
