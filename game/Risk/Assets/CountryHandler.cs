@@ -65,6 +65,10 @@ public class CountryHandler : MonoBehaviour {
 		return -1;
 	}
 
+	public void quit(){
+		Application.LoadLevel (0);
+	}
+
 	public void clearAllObjects() {
 		for(int i = 0; i<numSpawned; i++)
 			if(Spawned[i] != null)
