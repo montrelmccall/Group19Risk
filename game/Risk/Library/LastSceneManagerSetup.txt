@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Die.unity
+- path: Assets/CardTesting.unity
   isLoaded: 1
   isActive: 1
