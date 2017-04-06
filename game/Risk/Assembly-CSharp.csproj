@@ -45,11 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Cards\Scripts\attachToCamera.cs" />
+     <Compile Include="Assets\Cards\Scripts\cardCentral.cs" />
+     <Compile Include="Assets\Cards\Scripts\cardFollowMouse.cs" />
      <Compile Include="Assets\Cards\Scripts\drawACard.cs" />
      <Compile Include="Assets\Cards\Scripts\fullScreenCard.cs" />
+     <Compile Include="Assets\Cards\Scripts\highlight.cs" />
      <Compile Include="Assets\Cards\Scripts\returnCard.cs" />
      <Compile Include="Assets\Cards\Scripts\rotateCard.cs" />
+     <Compile Include="Assets\Cards\Scripts\staticCardVariables.cs" />
      <Compile Include="Assets\Die\Dice Scripts\DieValue.cs" />
      <Compile Include="Assets\Die\FindAllRigidbodies.cs" />
      <Compile Include="Assets\UIRolls.cs" />

@@ -121,7 +121,7 @@ void Start () {
     void OnMouseOver()
     {
         
-            if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
             {
                 Debug.Log("clicked1");
                 enabled = false;

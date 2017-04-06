@@ -135,7 +135,7 @@ public class returnCard : MonoBehaviour {
     void OnMouseOver()
     {
         
-            if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.RightShift))
             {
                 Debug.Log("clicked2");
                 enabled = false;
