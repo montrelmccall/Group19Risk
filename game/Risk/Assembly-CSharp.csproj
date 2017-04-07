@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AddManOnClick.cs" />
      <Compile Include="Assets\Cards\Scripts\cardCentral.cs" />
      <Compile Include="Assets\Cards\Scripts\cardFollowMouse.cs" />
      <Compile Include="Assets\Cards\Scripts\drawACard.cs" />
@@ -53,8 +54,10 @@
      <Compile Include="Assets\Cards\Scripts\returnCard.cs" />
      <Compile Include="Assets\Cards\Scripts\rotateCard.cs" />
      <Compile Include="Assets\Cards\Scripts\staticCardVariables.cs" />
+     <Compile Include="Assets\CountryHandler.cs" />
      <Compile Include="Assets\Die\Dice Scripts\DieValue.cs" />
      <Compile Include="Assets\Die\FindAllRigidbodies.cs" />
+     <Compile Include="Assets\UIClick.cs" />
      <Compile Include="Assets\UIRolls.cs" />
      <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
