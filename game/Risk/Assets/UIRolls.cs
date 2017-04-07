@@ -57,7 +57,7 @@ public class UIRolls : MonoBehaviour {
 		}
 
 		for (int i = 0; i < dice.GetLength (0); i++) {
-			if(dice[i].GetComponent<Rigidbody>().velocity.magnitude < 1f) {
+			if(dice[i].GetComponent<Rigidbody>().velocity.magnitude < 1f && dice[i].GetComponent<Rigidbody>().velocity.magnitude > 0.01f) {
 				float newX = dice [i].transform.position.x*40f + startPos [i].x;
 				float newY = dice [i].transform.position.y*40f + startPos [i].y;
 				float newZ = dice [i].transform.position.z*40f + startPos [i].z;
@@ -65,8 +65,6 @@ public class UIRolls : MonoBehaviour {
 				dice [i].transform.position = new Vector3 (newX / 41f, newY / 41f, newZ / 41f);
 			}
 			else
-				dice [i].GetComponent<MeshCollider> ().enabled = true;
-			if(dice[i].GetComponent<Rigidbody>().velocity.magnitude < 0.1f)
 				dice [i].GetComponent<MeshCollider> ().enabled = true;
 		}
 	}
